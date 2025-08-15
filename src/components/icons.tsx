@@ -7,7 +7,7 @@ export function Logo({ className }: { className?: string }) {
         <BotMessageSquare className="w-6 h-6 group-data-[collapsed=icon]:w-5 group-data-[collapsed=icon]:h-5 transition-all" />
       </div>
       <h1 className="text-lg font-bold text-primary group-data-[collapsed=icon]:hidden whitespace-nowrap">
-        Accreditation Ace
+        verifidesk.io
       </h1>
     </div>
   );

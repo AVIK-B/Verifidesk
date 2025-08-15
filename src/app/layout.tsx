@@ -4,7 +4,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { SidebarProvider } from '@/components/ui/sidebar';
 
 export const metadata: Metadata = {
-  title: 'Accreditation Ace',
+  title: 'verifidesk.io',
   description: 'A SaaS platform that revolutionizes educational accreditation management.',
 };
 
