@@ -7,9 +7,8 @@ import {
   FileCheck,
   FileSearch,
   Lightbulb,
-  AlertTriangle,
   Settings,
-  FolderArchive,
+  Menu,
 } from 'lucide-react';
 import {
   Sidebar,
@@ -20,9 +19,9 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarTrigger,
 } from '@/components/ui/sidebar';
 import { Logo } from '@/components/icons';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const menuItems = [
   {
@@ -59,8 +58,13 @@ export default function DashboardLayout({
     <div className="flex min-h-screen w-full">
       <Sidebar collapsible="icon" variant="sidebar">
         <SidebarContent>
-          <SidebarHeader>
+          <SidebarHeader className="flex items-center justify-between">
             <Logo />
+            <div className="md:hidden">
+              <SidebarTrigger>
+                <Menu className="h-5 w-5" />
+              </SidebarTrigger>
+            </div>
           </SidebarHeader>
           <SidebarMenu>
             {menuItems.map((item) => (

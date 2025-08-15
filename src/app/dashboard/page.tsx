@@ -59,7 +59,7 @@ export default function DashboardPage() {
       <DashboardHeader title="Dashboard" />
       <main className="flex-1 space-y-4 p-4 pt-6 md:p-8">
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          <Card>
+          <Card className="transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
                 Overall Compliance
@@ -71,7 +71,7 @@ export default function DashboardPage() {
               <Progress value={85} className="mt-2 h-2" />
             </CardContent>
           </Card>
-          <Card>
+          <Card className="transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
                 Documents Verified
@@ -85,7 +85,7 @@ export default function DashboardPage() {
               </p>
             </CardContent>
           </Card>
-          <Card>
+          <Card className="transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Pending Actions</CardTitle>
               <Clock className="h-4 w-4 text-muted-foreground" />
@@ -97,7 +97,7 @@ export default function DashboardPage() {
               </p>
             </CardContent>
           </Card>
-          <Card>
+          <Card className="transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Critical Alerts</CardTitle>
               <AlertCircle className="h-4 w-4 text-destructive" />
@@ -111,7 +111,7 @@ export default function DashboardPage() {
           </Card>
         </div>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-7">
-          <Card className="col-span-1 lg:col-span-4">
+          <Card className="col-span-1 lg:col-span-4 transition-all duration-200 hover:shadow-lg">
             <CardHeader>
               <CardTitle>Document Upload Trends</CardTitle>
               <CardDescription>Last 6 months</CardDescription>
@@ -134,7 +134,7 @@ export default function DashboardPage() {
               </ChartContainer>
             </CardContent>
           </Card>
-          <Card className="col-span-1 lg:col-span-3">
+          <Card className="col-span-1 lg:col-span-3 transition-all duration-200 hover:shadow-lg">
             <CardHeader>
               <CardTitle>Compliance Status</CardTitle>
               <CardDescription>
@@ -186,7 +186,7 @@ export default function DashboardPage() {
             </CardContent>
           </Card>
         </div>
-        <Card>
+        <Card className="transition-all duration-200 hover:shadow-lg">
           <CardHeader>
             <CardTitle>Recent Activity</CardTitle>
             <CardDescription>
