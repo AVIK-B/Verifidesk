@@ -106,8 +106,8 @@ export default function LandingPage() {
 
         <section className="py-12 md:py-24 lg:py-32">
            <div className="container mx-auto px-4 md:px-6">
-            <div className="mx-auto grid max-w-5xl items-center gap-8 lg:grid-cols-2 lg:gap-16">
-               <div className="relative h-full w-full">
+            <div className="mx-auto max-w-5xl text-center">
+               <div className="relative mx-auto max-w-3xl">
                 <Image
                   src="https://placehold.co/600x400.png"
                   alt="Product Screenshot"
@@ -118,14 +118,14 @@ export default function LandingPage() {
                   data-ai-hint="dashboard analytics"
                 />
               </div>
-              <div className="space-y-6">
+              <div className="mt-8">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
                  Focus on What Matters Most: Education
                 </h2>
-                <p className="text-muted-foreground">
+                <p className="mt-4 text-muted-foreground">
                   Our platform handles the tedious, repetitive tasks of accreditation so your faculty and staff can focus on their primary mission: providing quality education.
                 </p>
-                 <Button size="lg" asChild>
+                 <Button size="lg" asChild className="mt-6">
                   <Link href="/dashboard">
                     See It in Action
                   </Link>
