@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 @layer base {

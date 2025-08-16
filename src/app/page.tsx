@@ -46,7 +46,7 @@ export default function LandingPage() {
       </header>
 
       <main className="flex-1">
-        <section className="py-12 md:py-24 lg:py-32">
+        <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container mx-auto px-4 text-center md:px-6">
             <div className="mx-auto max-w-4xl">
               <div className="mb-6 inline-block rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
@@ -75,7 +75,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="bg-secondary py-12 md:py-24 lg:py-32">
+        <section className="w-full bg-secondary py-12 md:py-24 lg:py-32">
           <div className="container mx-auto px-4 text-center md:px-6">
             <div className="mx-auto max-w-5xl">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
@@ -104,36 +104,35 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="py-12 md:py-24 lg:py-32">
-          <div className="mx-auto w-full max-w-5xl px-4 text-center md:px-6">
-            <div className="relative mx-auto max-w-3xl">
+        <section className="w-full py-12 md:py-24 lg:py-32">
+          <div className="container mx-auto w-full max-w-5xl px-4 text-center md:px-6">
+            <div className="flex flex-col items-center justify-center text-center">
               <Image
                 src="https://placehold.co/600x400.png"
                 alt="Product Screenshot"
-                layout="responsive"
                 width={600}
                 height={400}
                 className="rounded-xl shadow-2xl"
                 data-ai-hint="dashboard analytics"
               />
-            </div>
-            <div className="mt-8">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
-                Focus on What Matters Most: Education
-              </h2>
-              <p className="mt-4 text-muted-foreground">
-                Our platform handles the tedious, repetitive tasks of accreditation so your faculty and staff can focus on their primary mission: providing quality education.
-              </p>
-              <Button size="lg" asChild className="mt-6">
-                <Link href="/dashboard">
-                  See It in Action
-                </Link>
-              </Button>
+              <div className="mt-8">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
+                  Focus on What Matters Most: Education
+                </h2>
+                <p className="mt-4 text-muted-foreground">
+                  Our platform handles the tedious, repetitive tasks of accreditation so your faculty and staff can focus on their primary mission: providing quality education.
+                </p>
+                <Button size="lg" asChild className="mt-6">
+                  <Link href="/dashboard">
+                    See It in Action
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="bg-primary text-primary-foreground py-12 md:py-24 lg:py-32">
+        <section className="w-full bg-primary text-primary-foreground py-12 md:py-24 lg:py-32">
           <div className="container mx-auto px-4 text-center md:px-6">
             <div className="mx-auto max-w-3xl">
               <BotMessageSquare className="mx-auto h-12 w-12" />
@@ -154,7 +153,7 @@ export default function LandingPage() {
         </section>
       </main>
 
-      <footer className="border-t">
+      <footer className="w-full border-t">
         <div className="container mx-auto flex flex-col items-center justify-between gap-4 px-4 py-6 text-center sm:flex-row sm:px-6">
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} Verifidesk.io. All rights reserved.
