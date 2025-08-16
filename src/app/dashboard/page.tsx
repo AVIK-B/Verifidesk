@@ -19,24 +19,31 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import {
-  BarChart,
   CheckCircle,
   Clock,
   FileText,
   AlertCircle,
-  LineChart,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Line,
-  Legend,
+  BarChart as BarChartIcon,
+  LineChart as LineChartIcon,
 } from 'lucide-react';
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
 } from '@/components/ui/chart';
-import { Bar, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts';
+import {
+  Bar,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
+  LineChart,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Line,
+  Legend,
+} from 'recharts';
 
 const complianceData = [
   { status: 'Compliant', value: 85, fill: 'hsl(var(--chart-1))' },
