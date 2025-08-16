@@ -6,6 +6,25 @@ import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/icons';
 import { ArrowRight, CheckCircle, BotMessageSquare } from 'lucide-react';
 import Image from 'next/image';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+
+const features = [
+  {
+    title: 'AI Document Verification',
+    description: 'Instantly check documents against accreditation criteria.',
+    icon: <CheckCircle className="h-6 w-6 text-primary" />,
+  },
+  {
+    title: 'Predictive Compliance',
+    description: 'Identify potential gaps before they become issues.',
+    icon: <CheckCircle className="h-6 w-6 text-primary" />,
+  },
+  {
+    title: 'Intelligent Suggestions',
+    description: 'Get AI-powered recommendations for required documentation.',
+    icon: <CheckCircle className="h-6 w-6 text-primary" />,
+  },
+];
 
 export default function LandingPage() {
   return (
@@ -29,14 +48,14 @@ export default function LandingPage() {
       <main className="flex-1">
         <section className="py-12 md:py-24 lg:py-32">
           <div className="container mx-auto px-4 text-center md:px-6">
-            <div className="mx-auto max-w-3xl">
+            <div className="mx-auto max-w-4xl">
               <div className="mb-6 inline-block rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
                 AI-Powered Accreditation Management
               </div>
-              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
                 Streamline Your Accreditation Process with Verifidesk.io
               </h1>
-              <p className="mt-6 text-lg text-muted-foreground">
+              <p className="mt-6 text-lg text-muted-foreground md:text-xl">
                 Verifidesk.io is a SaaS platform that revolutionizes educational
                 accreditation management. Our AI-driven tools simplify document
                 verification, suggest required documents, and predict
@@ -57,9 +76,38 @@ export default function LandingPage() {
         </section>
 
         <section className="bg-secondary py-12 md:py-24 lg:py-32">
-          <div className="container mx-auto px-4 md:px-6">
+          <div className="container mx-auto px-4 text-center md:px-6">
+            <div className="mx-auto max-w-5xl">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
+                Why Verifidesk.io is Essential for Your Institution
+              </h2>
+              <p className="mt-4 text-muted-foreground md:text-lg">
+                The accreditation process (NAAC, NBA, NIRF) is critical but often
+                manual, time-consuming, and prone to errors. Verifidesk.io targets
+                universities, colleges, and other educational institutions to
+                automate and streamline this entire workflow.
+              </p>
+              <div className="mt-12 grid gap-8 md:grid-cols-3">
+                {features.map((feature, index) => (
+                  <Card key={index} className="transform text-left transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                    <CardHeader className="flex flex-row items-center gap-4">
+                      {feature.icon}
+                      <CardTitle>{feature.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-muted-foreground">{feature.description}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-12 md:py-24 lg:py-32">
+           <div className="container mx-auto px-4 md:px-6">
             <div className="mx-auto grid max-w-5xl items-center gap-8 lg:grid-cols-2 lg:gap-16">
-              <div className="relative h-full w-full">
+               <div className="relative h-full w-full">
                 <Image
                   src="https://placehold.co/600x400.png"
                   alt="Product Screenshot"
@@ -72,52 +120,34 @@ export default function LandingPage() {
               </div>
               <div className="space-y-6">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
-                  Why Verifidesk.io is Essential for Your Institution
+                 Focus on What Matters Most: Education
                 </h2>
                 <p className="text-muted-foreground">
-                  The accreditation process (NAAC, NBA, NIRF) is critical but often
-                  manual, time-consuming, and prone to errors. Verifidesk.io targets
-                  universities, colleges, and other educational institutions to
-                  automate and streamline this entire workflow.
+                  Our platform handles the tedious, repetitive tasks of accreditation so your faculty and staff can focus on their primary mission: providing quality education.
                 </p>
-                <ul className="grid gap-4">
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
-                    <span>
-                      <span className="font-semibold">AI Document Verification:</span> Instantly check documents against accreditation criteria.
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
-                    <span>
-                      <span className="font-semibold">Predictive Compliance:</span> Identify potential gaps before they become issues.
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
-                    <span>
-                      <span className="font-semibold">Intelligent Suggestions:</span> Get AI-powered recommendations for required documentation.
-                    </span>
-                  </li>
-                </ul>
+                 <Button size="lg" asChild>
+                  <Link href="/dashboard">
+                    See It in Action
+                  </Link>
+                </Button>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="py-12 md:py-24 lg:py-32">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="mx-auto max-w-3xl text-center">
-              <BotMessageSquare className="mx-auto h-12 w-12 text-primary" />
+        <section className="bg-primary text-primary-foreground py-12 md:py-24 lg:py-32">
+          <div className="container mx-auto px-4 text-center md:px-6">
+            <div className="mx-auto max-w-3xl">
+              <BotMessageSquare className="mx-auto h-12 w-12" />
               <h2 className="mt-4 text-3xl font-bold tracking-tighter sm:text-4xl">
                 Ready to Transform Your Accreditation Workflow?
               </h2>
-              <p className="mt-4 text-lg text-muted-foreground">
+              <p className="mt-4 text-lg text-primary-foreground/80">
                 Join leading institutions in embracing a smarter, faster, and
                 more reliable accreditation process.
               </p>
               <div className="mt-8">
-                <Button size="lg" asChild>
+                <Button size="lg" variant="secondary" asChild>
                   <Link href="/dashboard">Get Started for Free</Link>
                 </Button>
               </div>
@@ -127,18 +157,18 @@ export default function LandingPage() {
       </main>
 
       <footer className="border-t">
-        <div className="container mx-auto flex flex-col items-center justify-between gap-4 px-4 py-6 md:flex-row md:px-6">
+        <div className="container mx-auto flex flex-col items-center justify-between gap-4 px-4 py-6 text-center sm:flex-row sm:px-6">
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} Verifidesk.io. All rights reserved.
           </p>
-          <nav className="flex gap-4">
+          <div className="flex gap-4">
             <Link href="#" className="text-sm hover:underline">
               Terms of Service
             </Link>
             <Link href="#" className="text-sm hover:underline">
               Privacy Policy
             </Link>
-          </nav>
+          </div>
         </div>
       </footer>
     </div>
