@@ -20,8 +20,10 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarTrigger,
+  useSidebar,
 } from '@/components/ui/sidebar';
 import { Logo } from '@/components/icons';
+import { Button } from '@/components/ui/button';
 
 const menuItems = [
   {
@@ -52,19 +54,28 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const { toggleSidebar, state } = useSidebar();
   const isActive = (path: string) => pathname === path;
 
   return (
     <div className="flex min-h-screen w-full">
-      <Sidebar collapsible="icon" variant="sidebar">
+       <Sidebar collapsible="icon" variant="sidebar" defaultOpen={false}>
         <SidebarContent>
-          <SidebarHeader className="flex items-center justify-between">
+          <SidebarHeader className="flex items-center justify-between p-2">
             <Logo />
             <div className="md:hidden">
               <SidebarTrigger>
                 <Menu className="h-5 w-5" />
               </SidebarTrigger>
             </div>
+             <Button
+                variant="ghost"
+                size="icon"
+                className="hidden h-7 w-7 md:flex"
+                onClick={toggleSidebar}
+              >
+                <Menu className="h-5 w-5" />
+              </Button>
           </SidebarHeader>
           <SidebarMenu>
             {menuItems.map((item) => (

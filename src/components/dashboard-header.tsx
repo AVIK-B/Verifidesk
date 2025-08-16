@@ -1,7 +1,7 @@
 'use client';
 
 import { SidebarTrigger } from '@/components/ui/sidebar';
-import { Bell, Menu } from 'lucide-react';
+import { Bell, Menu, Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -13,6 +13,23 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import Link from 'next/link';
+import { useTheme } from 'next-themes';
+
+function ThemeToggle() {
+  const { setTheme, theme } = useTheme();
+
+  return (
+    <DropdownMenuItem onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
+      <div className="flex w-full items-center justify-between">
+        <span>Toggle Theme</span>
+        <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+        <Moon className="absolute right-2 h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+        <span className="sr-only">Toggle theme</span>
+      </div>
+    </DropdownMenuItem>
+  );
+}
+
 
 function UserProfile() {
   return (
@@ -41,6 +58,7 @@ function UserProfile() {
         <DropdownMenuSeparator />
         <DropdownMenuItem>Profile</DropdownMenuItem>
         <DropdownMenuItem>Settings</DropdownMenuItem>
+        <ThemeToggle />
         <DropdownMenuSeparator />
         <DropdownMenuItem>Log out</DropdownMenuItem>
       </DropdownMenuContent>
