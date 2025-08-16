@@ -105,32 +105,30 @@ export default function LandingPage() {
         </section>
 
         <section className="py-12 md:py-24 lg:py-32">
-           <div className="container mx-auto px-4 md:px-6">
-            <div className="mx-auto max-w-5xl text-center">
-               <div className="relative mx-auto max-w-3xl">
-                <Image
-                  src="https://placehold.co/600x400.png"
-                  alt="Product Screenshot"
-                  layout="responsive"
-                  width={600}
-                  height={400}
-                  className="rounded-xl shadow-2xl"
-                  data-ai-hint="dashboard analytics"
-                />
-              </div>
-              <div className="mt-8">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
-                 Focus on What Matters Most: Education
-                </h2>
-                <p className="mt-4 text-muted-foreground">
-                  Our platform handles the tedious, repetitive tasks of accreditation so your faculty and staff can focus on their primary mission: providing quality education.
-                </p>
-                 <Button size="lg" asChild className="mt-6">
-                  <Link href="/dashboard">
-                    See It in Action
-                  </Link>
-                </Button>
-              </div>
+          <div className="mx-auto w-full max-w-5xl px-4 text-center md:px-6">
+            <div className="relative mx-auto max-w-3xl">
+              <Image
+                src="https://placehold.co/600x400.png"
+                alt="Product Screenshot"
+                layout="responsive"
+                width={600}
+                height={400}
+                className="rounded-xl shadow-2xl"
+                data-ai-hint="dashboard analytics"
+              />
+            </div>
+            <div className="mt-8">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
+                Focus on What Matters Most: Education
+              </h2>
+              <p className="mt-4 text-muted-foreground">
+                Our platform handles the tedious, repetitive tasks of accreditation so your faculty and staff can focus on their primary mission: providing quality education.
+              </p>
+              <Button size="lg" asChild className="mt-6">
+                <Link href="/dashboard">
+                  See It in Action
+                </Link>
+              </Button>
             </div>
           </div>
         </section>
