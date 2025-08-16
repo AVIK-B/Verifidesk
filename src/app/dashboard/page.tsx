@@ -24,6 +24,12 @@ import {
   Clock,
   FileText,
   AlertCircle,
+  LineChart,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Line,
+  Legend,
 } from 'lucide-react';
 import {
   ChartContainer,
@@ -38,12 +44,12 @@ const complianceData = [
 ];
 
 const documentUploadData = [
-  { month: 'Jan', count: 120 },
-  { month: 'Feb', count: 180 },
-  { month: 'Mar', count: 220 },
-  { month: 'Apr', count: 150 },
-  { month: 'May', count: 250 },
-  { month: 'Jun', count: 300 },
+  { month: 'Jan', uploaded: 120, verified: 90 },
+  { month: 'Feb', uploaded: 180, verified: 150 },
+  { month: 'Mar', uploaded: 220, verified: 190 },
+  { month: 'Apr', uploaded: 150, verified: 120 },
+  { month: 'May', uploaded: 250, verified: 210 },
+  { month: 'Jun', uploaded: 300, verified: 260 },
 ];
 
 const recentActivity = [
@@ -117,19 +123,26 @@ export default function DashboardPage() {
               <CardDescription>Last 6 months</CardDescription>
             </CardHeader>
             <CardContent>
-              <ChartContainer config={{}} className="h-[300px] w-full">
+              <ChartContainer config={{
+                uploaded: {
+                  label: "Uploaded",
+                  color: "hsl(var(--chart-1))",
+                },
+                verified: {
+                  label: "Verified",
+                  color: "hsl(var(--chart-2))",
+                },
+              }} className="h-[300px] w-full">
                 <ResponsiveContainer>
-                  <BarChart data={documentUploadData}>
-                    <Tooltip
-                      cursor={{ fill: 'hsl(var(--accent))', opacity: 0.2 }}
-                      content={<ChartTooltipContent />}
-                    />
-                    <Bar
-                      dataKey="count"
-                      fill="hsl(var(--primary))"
-                      radius={[4, 4, 0, 0]}
-                    />
-                  </BarChart>
+                   <LineChart data={documentUploadData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="month" />
+                    <YAxis />
+                    <Tooltip content={<ChartTooltipContent />} />
+                    <Legend />
+                    <Line type="monotone" dataKey="uploaded" stroke="hsl(var(--primary))" activeDot={{ r: 8 }} />
+                    <Line type="monotone" dataKey="verified" stroke="hsl(var(--accent))" />
+                  </LineChart>
                 </ResponsiveContainer>
               </ChartContainer>
             </CardContent>
