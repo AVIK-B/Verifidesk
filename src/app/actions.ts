@@ -12,6 +12,7 @@ import {
   suggestDocuments,
   DocumentSuggestionInput,
 } from '@/ai/flows/document-suggestion';
+import { detectFraud, FraudDetectionInput } from '@/ai/flows/fraud-detection';
 import { z } from 'zod';
 
 const verifyDocumentSchema = z.object({
@@ -66,5 +67,22 @@ export const predictComplianceAction = async (
   } catch (error) {
     console.error(error);
     return { success: false, error: 'Failed to predict compliance gaps.' };
+  }
+};
+
+const detectFraudSchema = z.object({
+  documentDataUri: z.string(),
+});
+
+export const detectFraudAction = async (
+  input: FraudDetectionInput
+) => {
+  const validatedInput = detectFraudSchema.parse(input);
+  try {
+    const result = await detectFraud(validatedInput);
+    return { success: true, data: result };
+  } catch (error) {
+    console.error(error);
+    return { success: false, error: 'Failed to detect fraud.' };
   }
 };

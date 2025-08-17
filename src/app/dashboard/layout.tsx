@@ -9,6 +9,7 @@ import {
   Lightbulb,
   Settings,
   Menu,
+  ShieldAlert,
 } from 'lucide-react';
 import {
   Sidebar,
@@ -45,6 +46,11 @@ const menuItems = [
     href: '/dashboard/predictive-compliance',
     label: 'Compliance AI',
     icon: Lightbulb,
+  },
+  {
+    href: '/dashboard/fraud-detection',
+    label: 'Fraud Detection',
+    icon: ShieldAlert,
   },
 ];
 

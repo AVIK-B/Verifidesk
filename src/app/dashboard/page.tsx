@@ -24,7 +24,6 @@ import {
   FileText,
   AlertCircle,
   BarChart as BarChartIcon,
-  LineChart as LineChartIcon,
 } from 'lucide-react';
 import {
   ChartContainer,
@@ -53,8 +52,8 @@ const complianceData = [
 const documentUploadData = [
   { month: 'Jan', uploaded: 120, verified: 90 },
   { month: 'Feb', uploaded: 180, verified: 150 },
-  { month: 'Mar', uploaded: 220, verified: 190 },
-  { month: 'Apr', uploaded: 150, verified: 120 },
+  { month: 'Mar', uploaded: 160, verified: 140 },
+  { month: 'Apr', uploaded: 210, verified: 180 },
   { month: 'May', uploaded: 250, verified: 210 },
   { month: 'Jun', uploaded: 300, verified: 260 },
 ];
