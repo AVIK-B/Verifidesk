@@ -1,6 +1,7 @@
 
 'use client';
 
+import * as React from 'react';
 import { DashboardHeader } from '@/components/dashboard-header';
 import {
   Card,
@@ -320,5 +321,3 @@ export default function DashboardPage() {
     </div>
   );
 }
-
-    
