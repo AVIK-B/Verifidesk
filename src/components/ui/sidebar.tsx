@@ -1,3 +1,4 @@
+
 "use client"
 
 import * as React from "react"
@@ -158,7 +159,7 @@ SidebarProvider.displayName = "SidebarProvider"
 
 const Sidebar = React.forwardRef<
   HTMLDivElement,
-  Omit<React.ComponentProps<"div">, "defaultOpen"> & {
+  React.ComponentProps<"div"> & {
     side?: "left" | "right"
     variant?: "sidebar" | "floating" | "inset"
     collapsible?: "offcanvas" | "icon" | "none"
@@ -172,6 +173,7 @@ const Sidebar = React.forwardRef<
       collapsible = "offcanvas",
       className,
       children,
+      defaultOpen,
       ...props
     },
     ref
