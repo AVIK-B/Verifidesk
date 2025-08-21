@@ -30,6 +30,8 @@ import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
+  ChartLegend,
+  ChartLegendContent,
 } from '@/components/ui/chart';
 import {
   Bar,
@@ -96,6 +98,26 @@ const recentActivity = [
 ];
 
 export default function DashboardPage() {
+    const chartConfig = {
+      value: {
+        label: 'Documents',
+      },
+      Compliant: {
+        label: 'Compliant',
+        color: 'hsl(var(--chart-1))',
+      },
+      Pending: {
+        label: 'Pending',
+        color: 'hsl(var(--chart-2))',
+      },
+      'Needs Review': {
+        label: 'Needs Review',
+        color: 'hsl(var(--destructive))',
+      },
+    };
+  const totalValue = React.useMemo(() => {
+    return complianceData.reduce((acc, curr) => acc + curr.value, 0);
+  }, []);
   return (
     <div className="flex flex-1 flex-col font-body">
       <DashboardHeader title="Accreditation Dashboard" />
@@ -204,40 +226,37 @@ export default function DashboardPage() {
                 Breakdown of document compliance.
               </CardDescription>
             </CardHeader>
-            <CardContent>
-              <ChartContainer config={{}} className="h-[300px] w-full">
+            <CardContent className="flex items-center justify-center pb-0">
+               <ChartContainer
+                config={chartConfig}
+                className="mx-auto aspect-square h-[250px]"
+              >
                 <ResponsiveContainer>
                   <PieChart>
-                    <Tooltip content={<ChartTooltipContent />} />
+                    <Tooltip
+                      cursor={false}
+                      content={<ChartTooltipContent hideLabel />}
+                    />
                     <Pie
                       data={complianceData}
                       dataKey="value"
                       nameKey="status"
-                      cx="50%"
-                      cy="50%"
-                      outerRadius={100}
                       innerRadius={60}
-                      labelLine={false}
-                      label={({
-                        cx,
-                        cy,
-                        midAngle,
-                        innerRadius,
-                        outerRadius,
-                        percent,
-                        payload,
-                      }) => (
-                        <text
-                          x={cx}
-                          y={cy}
-                          fill="hsl(var(--card-foreground))"
+                      strokeWidth={5}
+                    >
+                       <text
+                          x="50%"
+                          y="50%"
                           textAnchor="middle"
-                          dominantBaseline="central"
-                          className="text-xs"
+                          dominantBaseline="middle"
+                          className="fill-foreground text-3xl font-bold"
                         >
-                           {payload.status} ({(percent * 100).toFixed(0)}%)
+                          {((complianceData.find(d => d.status === 'Compliant')?.value || 0) / totalValue * 100).toFixed(0)}%
                         </text>
-                      )}
+                    </Pie>
+                     <ChartLegend
+                      content={<ChartLegendContent nameKey="status" />}
+                      className="-translate-y-[2rem] flex-wrap gap-2 [&>*]:basis-1/4 [&>*]:justify-center"
                     />
                   </PieChart>
                 </ResponsiveContainer>
@@ -301,3 +320,5 @@ export default function DashboardPage() {
     </div>
   );
 }
+
+    
