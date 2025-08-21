@@ -229,7 +229,7 @@ export default function DashboardPage() {
                       }) => (
                         <text
                           x={cx}
-                          y={y}
+                          y={cy}
                           fill="hsl(var(--card-foreground))"
                           textAnchor="middle"
                           dominantBaseline="central"
