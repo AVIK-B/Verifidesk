@@ -30,9 +30,10 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { FileText, Loader2, Download } from 'lucide-react';
+import { FileText, Loader2 } from 'lucide-react';
 import { DashboardHeader } from '@/components/dashboard-header';
 import { Checkbox } from '@/components/ui/checkbox';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 const formSchema = z.object({
   accreditationType: z.string().min(1, 'Please select an accreditation type.'),
@@ -87,11 +88,11 @@ export default function ReportGenerationPage() {
 
     toast({
       title: 'Report Generated Successfully',
-      description: `Your ${values.reportType} report for ${values.accreditationType} is ready for download.`,
+      description: `Your ${values.reportType} report for ${values.accreditationType} is ready.`,
     });
 
     setGeneratedReport(
-      `This is a simulated ${values.reportType} report for the ${values.department} department, focusing on ${values.accreditationType} accreditation. Sub-criteria are ${values.includeSubCriteria ? 'included' : 'not included'}.`
+      `This is a simulated ${values.reportType} report for the ${values.department} department, focusing on ${values.accreditationType} accreditation. Sub-criteria are ${values.includeSubCriteria ? 'included' : 'not included'}.\n\nReport Details:\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam.`
     );
     setIsGenerating(false);
   };
@@ -238,7 +239,7 @@ export default function ReportGenerationPage() {
                 Your report will appear here once generated.
               </CardDescription>
             </CardHeader>
-            <CardContent className="min-h-[300px]">
+            <CardContent className="min-h-[400px]">
               {isGenerating ? (
                 <div className="flex h-full flex-col items-center justify-center gap-2">
                   <Loader2 className="h-8 w-8 animate-spin text-primary" />
@@ -247,17 +248,17 @@ export default function ReportGenerationPage() {
                   </p>
                 </div>
               ) : generatedReport ? (
-                <div className="flex h-full flex-col items-center justify-center gap-4 text-center">
-                  <FileText className="h-16 w-16 text-green-500" />
-                  <p className="text-lg font-medium">Report Ready!</p>
-                  <p className="text-sm text-muted-foreground">
-                    {generatedReport}
-                  </p>
-                  <Button>
-                    <Download className="mr-2 h-4 w-4" />
-                    Download PDF
-                  </Button>
-                </div>
+                <ScrollArea className="h-[400px] w-full rounded-md border p-4">
+                  <div className="flex h-full flex-col gap-4">
+                    <div className="flex items-center gap-3">
+                       <FileText className="h-8 w-8 text-primary" />
+                       <p className="text-lg font-medium">Report Ready!</p>
+                    </div>
+                    <pre className="whitespace-pre-wrap text-sm text-muted-foreground">
+                      {generatedReport}
+                    </pre>
+                  </div>
+                </ScrollArea>
               ) : (
                 <div className="flex h-full flex-col items-center justify-center gap-4 text-center">
                   <div className="rounded-full bg-secondary p-4">
