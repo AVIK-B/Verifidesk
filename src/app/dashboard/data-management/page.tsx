@@ -262,6 +262,23 @@ export default function DataManagementPage() {
                 </SelectItem>
               </SelectContent>
             </Select>
+             <Select
+              onValueChange={(value) =>
+                table
+                  .getColumn('status')
+                  ?.setFilterValue(value === 'all' ? '' : value)
+              }
+            >
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Filter by Status" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Statuses</SelectItem>
+                <SelectItem value="Verified">Verified</SelectItem>
+                <SelectItem value="Pending">Pending</SelectItem>
+                <SelectItem value="Needs Review">Needs Review</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
           <div className="flex items-center gap-2">
             <Button variant="outline">
