@@ -159,9 +159,11 @@ export const columns: ColumnDef<Document>[] = [
   {
     accessorKey: 'lastUpdated',
     header: 'Last Updated',
-    cell: ({ row }) => (
-      <div>{new Date(row.getValue('lastUpdated')).toLocaleDateString()}</div>
-    ),
+    cell: ({ row }) => {
+      const date = new Date(row.getValue('lastUpdated'));
+      const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+      return <div>{formattedDate}</div>;
+    },
   },
   {
     id: 'actions',
