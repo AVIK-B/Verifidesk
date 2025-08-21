@@ -5,7 +5,7 @@ import { SidebarProvider } from '@/components/ui/sidebar';
 import { ThemeProvider } from '@/components/theme-provider';
 
 export const metadata: Metadata = {
-  title: 'verifidesk.io',
+  title: 'Accreditation Ace',
   description: 'A SaaS platform that revolutionizes educational accreditation management.',
 };
 
@@ -37,3 +37,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+    

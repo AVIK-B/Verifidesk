@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -10,6 +11,8 @@ import {
   Settings,
   Menu,
   ShieldAlert,
+  Database,
+  FileText,
 } from 'lucide-react';
 import {
   Sidebar,
@@ -33,19 +36,19 @@ const menuItems = [
     icon: LayoutDashboard,
   },
   {
+    href: '/dashboard/data-management',
+    label: 'Data Management',
+    icon: Database,
+  },
+  {
+    href: '/dashboard/report-generation',
+    label: 'Report Generation',
+    icon: FileText,
+  },
+  {
     href: '/dashboard/document-verification',
     label: 'Doc Verification',
     icon: FileCheck,
-  },
-  {
-    href: '/dashboard/document-suggestions',
-    label: 'Doc Suggestions',
-    icon: FileSearch,
-  },
-  {
-    href: '/dashboard/predictive-compliance',
-    label: 'Compliance AI',
-    icon: Lightbulb,
   },
   {
     href: '/dashboard/fraud-detection',
@@ -65,7 +68,7 @@ export default function DashboardLayout({
 
   return (
     <div className="flex min-h-screen w-full">
-       <Sidebar collapsible="icon" variant="sidebar" defaultOpen={false}>
+       <Sidebar collapsible="icon" variant="sidebar" defaultOpen={true}>
         <SidebarContent>
           <SidebarHeader className="flex items-center justify-between p-2">
             <Logo />

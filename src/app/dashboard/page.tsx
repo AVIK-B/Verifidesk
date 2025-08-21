@@ -1,3 +1,4 @@
+
 'use client';
 
 import { DashboardHeader } from '@/components/dashboard-header';
@@ -17,13 +18,13 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
 import {
   CheckCircle,
-  Clock,
+  FileUp,
   FileText,
   AlertCircle,
-  BarChart as BarChartIcon,
+  Users,
+  Building,
 } from 'lucide-react';
 import {
   ChartContainer,
@@ -32,44 +33,92 @@ import {
 } from '@/components/ui/chart';
 import {
   Bar,
+  BarChart,
   Pie,
   PieChart,
   ResponsiveContainer,
-  Tooltip,
-  LineChart,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Line,
-  Legend,
+  Tooltip,
 } from 'recharts';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 const complianceData = [
-  { status: 'Compliant', value: 85, fill: 'hsl(var(--chart-1))' },
-  { status: 'Non-Compliant', value: 15, fill: 'hsl(var(--destructive))' },
+  { status: 'Compliant', value: 78, fill: 'hsl(var(--chart-1))' },
+  { status: 'Pending', value: 15, fill: 'hsl(var(--chart-2))' },
+  { status: 'Needs Review', value: 7, fill: 'hsl(var(--destructive))' },
 ];
 
-const documentUploadData = [
-  { month: 'Jan', uploaded: 120, verified: 90 },
-  { month: 'Feb', uploaded: 180, verified: 150 },
-  { month: 'Mar', uploaded: 160, verified: 140 },
-  { month: 'Apr', uploaded: 210, verified: 180 },
-  { month: 'May', uploaded: 250, verified: 210 },
-  { month: 'Jun', uploaded: 300, verified: 260 },
+const departmentStatus = [
+  { name: 'CompSci', progress: 92 },
+  { name: 'MechEng', progress: 85 },
+  { name: 'ElecEng', progress: 78 },
+  { name: 'CivilEng', progress: 65 },
+  { name: 'Physics', progress: 88 },
+  { name: 'Chemistry', progress: 95 },
 ];
 
 const recentActivity = [
-  { id: 1, doc: 'Faculty Achievements Q1', user: 'Dr. Smith', status: 'Verified', date: '2 days ago' },
-  { id: 2, doc: 'Curriculum Update 2024', user: 'HOD CompSci', status: 'Pending', date: '5 days ago' },
-  { id: 3, doc: 'Annual Report 2023', user: 'Admin Office', status: 'Verified', date: '1 week ago' },
-  { id: 4, doc: 'Research Grants Summary', user: 'Dr. Jones', status: 'Rejected', date: '2 weeks ago' },
+  {
+    id: 1,
+    doc: 'Criterion 1.1 - Curriculum Design',
+    user: 'Dr. Smith',
+    status: 'Verified',
+    dept: 'CompSci',
+  },
+  {
+    id: 2,
+    doc: 'Faculty Research Publications 2024',
+    user: 'HOD MechEng',
+    status: 'Pending',
+    dept: 'MechEng',
+  },
+  {
+    id: 3,
+    doc: 'Student-Faculty Ratio Report',
+    user: 'IQAC Office',
+    status: 'Verified',
+    dept: 'Admin',
+  },
+  {
+    id: 4,
+    doc: 'Infrastructure Audit Q2',
+    user: 'Dr. Jones',
+    status: 'Needs Review',
+    dept: 'CivilEng',
+  },
 ];
 
 export default function DashboardPage() {
   return (
-    <div className="flex flex-1 flex-col">
-      <DashboardHeader title="Dashboard" />
-      <main className="flex-1 space-y-4 p-4 pt-6 md:p-8">
+    <div className="flex flex-1 flex-col font-body">
+      <DashboardHeader title="Accreditation Dashboard" />
+      <main className="flex-1 space-y-6 p-4 pt-6 md:p-8">
+        <div className="flex items-center justify-between space-y-2">
+          <h2 className="text-3xl font-bold tracking-tight">
+            Welcome, IQAC Coordinator
+          </h2>
+          <div className="flex items-center space-x-2">
+            <Select defaultValue="NAAC">
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Select Accreditation" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="NAAC">NAAC</SelectItem>
+                <SelectItem value="NBA">NBA</SelectItem>
+                <SelectItem value="NIRF">NIRF</SelectItem>
+                <SelectItem value="QS">QS World Ranking</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           <Card className="transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -79,33 +128,37 @@ export default function DashboardPage() {
               <CheckCircle className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">85%</div>
-              <Progress value={85} className="mt-2 h-2" />
-            </CardContent>
-          </Card>
-          <Card className="transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">
-                Documents Verified
-              </CardTitle>
-              <FileText className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">1,234 / 1,500</div>
+              <div className="text-2xl font-bold">78%</div>
               <p className="text-xs text-muted-foreground">
-                +150 from last month
+                2% increase from last week
               </p>
             </CardContent>
           </Card>
           <Card className="transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Pending Actions</CardTitle>
-              <Clock className="h-4 w-4 text-muted-foreground" />
+              <CardTitle className="text-sm font-medium">
+                Documents Uploaded
+              </CardTitle>
+              <FileUp className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">26</div>
+              <div className="text-2xl font-bold">2,145</div>
               <p className="text-xs text-muted-foreground">
-                5 overdue
+                +180 from last month
+              </p>
+            </CardContent>
+          </Card>
+          <Card className="transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">
+                Faculties Contributing
+              </CardTitle>
+              <Users className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">128 / 150</div>
+              <p className="text-xs text-muted-foreground">
+                85% participation rate
               </p>
             </CardContent>
           </Card>
@@ -115,49 +168,40 @@ export default function DashboardPage() {
               <AlertCircle className="h-4 w-4 text-destructive" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">3</div>
+              <div className="text-2xl font-bold">5</div>
               <p className="text-xs text-muted-foreground">
-                Duplicate files detected
+                Pending mandatory documents
               </p>
             </CardContent>
           </Card>
         </div>
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-7">
-          <Card className="col-span-1 lg:col-span-4 transition-all duration-200 hover:shadow-lg">
+
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-5">
+          <Card className="col-span-1 lg:col-span-3 transition-all duration-200 hover:shadow-lg">
             <CardHeader>
-              <CardTitle>Document Upload Trends</CardTitle>
-              <CardDescription>Last 6 months</CardDescription>
+              <CardTitle>Department Progress</CardTitle>
+              <CardDescription>
+                Data submission status across departments.
+              </CardDescription>
             </CardHeader>
             <CardContent>
-              <ChartContainer config={{
-                uploaded: {
-                  label: "Uploaded",
-                  color: "hsl(var(--chart-1))",
-                },
-                verified: {
-                  label: "Verified",
-                  color: "hsl(var(--chart-2))",
-                },
-              }} className="h-[300px] w-full">
+              <ChartContainer config={{}} className="h-[300px] w-full">
                 <ResponsiveContainer>
-                   <LineChart data={documentUploadData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="month" />
-                    <YAxis />
-                    <Tooltip content={<ChartTooltipContent />} />
-                    <Legend />
-                    <Line type="monotone" dataKey="uploaded" stroke="hsl(var(--primary))" activeDot={{ r: 8 }} />
-                    <Line type="monotone" dataKey="verified" stroke="hsl(var(--accent))" />
-                  </LineChart>
+                  <BarChart data={departmentStatus} layout="vertical" margin={{ left: 10 }}>
+                     <XAxis type="number" hide />
+                     <YAxis dataKey="name" type="category" tickLine={false} axisLine={false} />
+                     <Tooltip content={<ChartTooltipContent />} cursor={{fill: 'hsl(var(--muted))'}} />
+                     <Bar dataKey="progress" radius={[4, 4, 4, 4]} fill="hsl(var(--primary))" />
+                  </BarChart>
                 </ResponsiveContainer>
               </ChartContainer>
             </CardContent>
           </Card>
-          <Card className="col-span-1 lg:col-span-3 transition-all duration-200 hover:shadow-lg">
+          <Card className="col-span-1 lg:col-span-2 transition-all duration-200 hover:shadow-lg">
             <CardHeader>
               <CardTitle>Compliance Status</CardTitle>
               <CardDescription>
-                Breakdown of document compliance status.
+                Breakdown of document compliance.
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -181,23 +225,19 @@ export default function DashboardPage() {
                         innerRadius,
                         outerRadius,
                         percent,
-                      }) => {
-                        const radius =
-                          innerRadius + (outerRadius - innerRadius) * 0.5;
-                        const x = cx + radius * Math.cos(-midAngle * (Math.PI / 180));
-                        const y = cy + radius * Math.sin(-midAngle * (Math.PI / 180));
-                        return (
-                          <text
-                            x={x}
-                            y={y}
-                            fill="white"
-                            textAnchor={x > cx ? 'start' : 'end'}
-                            dominantBaseline="central"
-                          >
-                            {`${(percent * 100).toFixed(0)}%`}
-                          </text>
-                        );
-                      }}
+                        payload,
+                      }) => (
+                        <text
+                          x={cx}
+                          y={y}
+                          fill="hsl(var(--card-foreground))"
+                          textAnchor="middle"
+                          dominantBaseline="central"
+                          className="text-xs"
+                        >
+                           {payload.status} ({(percent * 100).toFixed(0)}%)
+                        </text>
+                      )}
                     />
                   </PieChart>
                 </ResponsiveContainer>
@@ -205,6 +245,7 @@ export default function DashboardPage() {
             </CardContent>
           </Card>
         </div>
+
         <Card className="transition-all duration-200 hover:shadow-lg">
           <CardHeader>
             <CardTitle>Recent Activity</CardTitle>
@@ -216,16 +257,19 @@ export default function DashboardPage() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Document</TableHead>
+                  <TableHead>Document / Criterion</TableHead>
+                  <TableHead>Department</TableHead>
                   <TableHead>Submitted By</TableHead>
                   <TableHead>Status</TableHead>
-                  <TableHead>Date</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {recentActivity.map((activity) => (
                   <TableRow key={activity.id}>
                     <TableCell className="font-medium">{activity.doc}</TableCell>
+                    <TableCell>
+                      <Badge variant="outline">{activity.dept}</Badge>
+                    </TableCell>
                     <TableCell>{activity.user}</TableCell>
                     <TableCell>
                       <Badge
@@ -236,12 +280,17 @@ export default function DashboardPage() {
                             ? 'secondary'
                             : 'destructive'
                         }
-                        className={activity.status === 'Verified' ? 'bg-green-500/20 text-green-700 border-green-500/20 hover:bg-green-500/30' : ''}
+                        className={
+                          activity.status === 'Verified'
+                            ? 'bg-green-500/20 text-green-700 border-green-500/20 hover:bg-green-500/30'
+                            : activity.status === 'Needs Review'
+                            ? 'bg-yellow-500/20 text-yellow-700 border-yellow-500/20 hover:bg-yellow-500/30'
+                            : ''
+                        }
                       >
                         {activity.status}
                       </Badge>
                     </TableCell>
-                    <TableCell>{activity.date}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>

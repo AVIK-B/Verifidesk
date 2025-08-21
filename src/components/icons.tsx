@@ -12,9 +12,11 @@ export function Logo({ className }: { className?: string }) {
       </div>
       {!isCollapsed && (
         <h1 className="text-lg font-bold text-primary whitespace-nowrap">
-          verifidesk.io
+          Accreditation Ace
         </h1>
       )}
     </div>
   );
 }
+
+    
